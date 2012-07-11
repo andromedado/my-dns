@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+{% block head %}
+	{% block metas %}{{ metas }}{% endblock %}
+	{% block links %}
+<link rel="stylesheet" type="text/css" href="/css/suture.php{% set styleAmp = '?' %}{% for style in styles %}{{ styleAmp ~ style }}{% set styleAmp = '&' %}{% endfor %}" />
+	{% endblock %}
+	{% block scripts %}
+<script type="text/javascript" src="/js/suture.php{% set scriptAmp = '?' %}{% for script in scripts %}{{ scriptAmp ~ script }}{% set scriptAmp = '&' %}{% endfor %}"></script>
+	{% endblock %}
+	<title>{% block title %}{{ title }} - My DNS{% endblock %}</title>
+{% endblock %}
+	</head>
+	<body>
+{% block body %}
+		<div id="wrapper">
+			<div id="topWrap">
+				<div class="wrap">
+					<h1><a href="/">My DNS Manager</a></h1>
+					{% block topWrap %}{% endblock %}
+				</div>
+			</div>
+			<div id="midWrap">
+				<div class="wrap">
+				{% block notifications %} {% block errorNotifications %} {% for
+				error in errors %}
+				<h2 class="f_msg msg">{{ error|raw }}</h2>
+				{% endfor %} {% endblock %} {% block goodNotifications %} {% for
+				notice in messages %}
+				<h2 class="s_msg msg">{{ notice|raw }}</h2>
+				{% endfor %} {% endblock %} {% endblock %}
+				{% block midWrap %}{% endblock %}
+				</div>
+			</div>
+			<div id="botWrap">
+				<div class="wrap">
+					{% block botWrap %}{% endblock %}
+				</div>
+			</div>
+		</div>
+{% endblock %}
+<!--
+{{ dump(invocation)|raw }}-->
+	</body>
+</html>

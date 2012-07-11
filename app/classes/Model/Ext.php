@@ -1,6 +1,7 @@
 <?php
 
-class ModelExt extends Model {
+class ModelExt extends Model
+{
 	protected $dbFields = array(
 	);
 	protected $readOnly = array(
@@ -20,5 +21,3 @@ class ModelExt extends Model {
 	}
 	
 }
-
-?>

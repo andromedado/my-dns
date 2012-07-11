@@ -1,2 +1,3 @@
 <?php
-FilterRoutes::addRoute('', array('Pages', 'homepage'));
+FilterRoutes::addRoute('', array('Zone'));
+FilterRoutes::addRoute('create-zone', array('Zone', 'create'));

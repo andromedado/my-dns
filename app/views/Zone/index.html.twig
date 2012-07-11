@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+{% block midWrap %}
+<h2>Zones:</h2>
+<ul>
+{% for zone in zones %}
+	<li><a href="{{ zone.href }}">{{ zone.zone }}</a></li>
+{% else %}
+	<li><i>no zones found</i></li>
+{% endfor %}
+</ul>
+<h3><a href="{{ newZoneHref }}">new zone</a></h3>
+{% endblock %}

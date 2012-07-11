@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block midWrap %}
+<h2>Create Zone</h2>
+<form action="{{ action }}" method="post">
+	<table class="autoT">
+		<tbody>
+			<tr>
+				<th>Zone:</th>
+				<td><input type="text" name="zone" class="not_blank" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<div align="center">
+		<input type="submit" value="Create" />
+	</div>
+</form>
+{% endblock %}
