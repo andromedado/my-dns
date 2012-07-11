@@ -1,0 +1,161 @@
+
+a {
+	text-decoration:none;
+}
+
+a.u {
+	text-decoration:underline;
+}
+
+table {
+	border-spacing:0;
+	border:0px none;
+}
+
+table.thar th {
+	text-align:right;
+}
+
+.white-bg input[type="password"],
+.white-bg input[type="text"] {
+	border:0px none;
+	margin-left:0;
+	padding:4px;
+	width:97%;
+	box-shadow: inset 1px 1px 5px #888;
+}
+
+.prettyForm label {
+	display:block;
+}
+
+.prettyForm label + input {
+	margin-bottom:6px;
+}
+
+.prettyForm {
+	text-align:left;
+}
+
+input.invisible {
+	border:0;
+	margin:0;
+	background-color:transparent;
+	font-size:14px;
+}
+
+body.notLoggedIn {
+	background-repeat:no-repeat;
+	background-position: 0 77px;
+	background-size:cover;
+}
+
+body.notLoggedIn.small {
+	background-size:auto;
+}
+
+.character {
+	float:left;
+	margin-right:20px;
+}
+
+.notLoggedIn #logo {
+	display:block;
+	margin:0 auto;
+}
+
+.wrap {
+	width:950px;
+	margin: 0 auto;
+}
+
+#header {
+	position:relative;
+}
+
+.header ul {
+	margin:2px 0;
+}
+
+.topRightItemsBelow {
+	list-style:none;
+	float:right;
+}
+
+.topRightItemsBelow li {
+	float:left;
+	margin-left:20px;
+}
+
+.topRightItemsAbove {
+	list-style:none;
+	float:right;
+}
+
+#header .wrap,
+#header img#holdPosition {
+	height:60px;
+}
+
+#header img#holdPosition {
+	width:1px;
+}
+
+#topProfileThumb {
+	margin-top:5px;
+}
+
+.header .topRightItemsAbove li {
+	display:inline;
+}
+
+#search_form {
+	display:inline;
+}
+
+ul.nav {
+	float:left;
+	list-style:none;
+}
+
+ul.nav li {
+	float:left;
+	margin-right:80px;
+}
+
+.header,
+.header a {
+	text-decoration:none;
+	font-weight:bold;
+}
+
+input.placeHold {
+	width:1px;
+	visibility:hidden;
+}
+
+#ajForms input[type="text"] {
+	width: 97%;
+}
+
+table.autoT {
+	border-bottom:1px solid #444;
+	border-right:1px solid #444;
+	width:100%;
+}
+
+table.autoT.nfw {
+	width:auto;
+}
+
+table.autoT > tbody > tr > td,
+table.autoT > tbody > tr > th {
+	border-top:1px solid #444;
+	border-left:1px solid #444;
+	padding:10px;
+	font-size:18px;
+}
+
+table.autoT > tbody > tr > th {
+	background-color:#DDD;
+}

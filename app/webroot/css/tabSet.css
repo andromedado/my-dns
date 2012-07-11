@@ -1,0 +1,41 @@
+
+.headWrapper,
+.bodyWrap {
+	border:1px solid #663;
+}
+
+.headWrapper {
+	background-color:#db9204;
+}
+
+.headWrap {
+	padding-left:10px;
+}
+
+.headWrapper {
+	float:left;
+	padding:5px;
+	margin:0 3px 0 0;
+	font-weight:bold;
+	font-size:14px;
+	color:#FFF;
+	cursor:pointer;
+}
+
+.headWrapper.sel {
+	color:#000;
+	background-color:#FFF;
+}
+
+.bodyWrapper {
+	display:none;
+}
+
+.bodyWrapper.sel {
+	display:block;
+}
+
+.bodyWrap {
+	padding:5px 30px 30px 30px;
+	margin-top:-5px;
+}

@@ -1,0 +1,63 @@
+/*
+Pallette:
+LighterMainGreen: #BAEB96
+MainGreen: #A4DB7C
+DarkerMainGreen: #8AC561
+
+Blue: #5B9EFB
+
+Black: #222
+*/
+
+body.notLoggedIn {
+	background-image:url(../images/big-bg.jpg);
+	background-color:#222;
+}
+
+.white-bg {
+	background-color:#FFF;
+}
+
+.light-green-bg,
+.white-bg input[type="password"],
+.white-bg input[type="text"] {
+	background-color:#BAEB96;
+}
+
+input[type="submit"] {
+	background-image:url(../images/submit-button.png);
+	width:22px;
+	height:22px;
+	background-color:transparent;
+	border:0px none;
+	padding:0;
+}
+
+.white,
+.header .topRightItemsAbove a,
+.header .topRightItemsAbove {
+	color:#FFF;
+}
+
+.black,
+a {
+	color:#222;
+}
+
+a:hover {
+	color:#A4DB7C;
+}
+
+.blue,
+a.blue {
+	color:#5B9EFB;
+}
+
+.green-bg {
+	background-color:#A4DB7C;
+}
+
+.darker-green,
+.header a.selected {
+	color:#8AC561;
+}

@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+	RewriteRule styles.css suture.php [NC,QSA,L]
+</IfModule>
+<FilesMatch "\.css$">
+	Header set Cache-Control "public"
+</FilesMatch>

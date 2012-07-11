@@ -1,0 +1,51 @@
+
+#login_wrap {
+	margin:50px auto;
+	width:275px;
+	background-color:#FFF;
+	border-radius:10px 10px 10px 10px;
+	text-align:left;
+	box-shadow:3px 2px 4px #222;
+}
+
+#login_wrap .join_submit {
+	float:right;
+}
+
+.top-curved {
+	border-radius:10px 10px 0 0;
+	padding:10px;
+}
+
+.top-curved h2 {
+	margin:0;
+}
+
+.login_padding {
+	padding:20px;
+}
+
+#login_wrap .choose h1 {
+	font-size:30pt;
+	text-align:center;
+}
+
+#back_a {
+	float:left;
+}
+
+#login_wrap #back_a,
+#login_wrap .login,
+#login_wrap .join,
+#login_wrap.join_a .choose,
+#login_wrap.login_a .choose {
+	display:none;
+}
+
+#just_login .login,
+#login_wrap.join_a #back_a,
+#login_wrap.login_a #back_a,
+#login_wrap.join_a .join,
+#login_wrap.login_a .login {
+	display:block;
+}

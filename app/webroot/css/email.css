@@ -1,0 +1,29 @@
+
+#email_wrap,
+#email_wrap2 {
+	border:1px solid #000;
+	background-color:#FFF;
+	padding:20px;
+	font-size:16px;
+	color:#000;
+	margin:0 auto;
+}
+
+#email_wrap2 {
+	width:800px;
+}
+
+#email_wrap2 input[type="text"] {
+	width:95%;
+}
+
+#email_wrap h2,
+#email_wrap2 h2,
+#email_wrap2 th {
+	margin-top:0;
+	font-size:18px;
+}
+
+.highlight {
+	background-color:#FF0;
+}

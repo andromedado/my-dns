@@ -1,0 +1,7 @@
+<FilesMatch "\.(js|php)$">
+	Header set Cache-Control "max-age=5"
+</FilesMatch>
+
+RewriteEngine On
+RewriteBase /crras/js/
+RewriteRule script.js suture.php [NC,QSA,L]
