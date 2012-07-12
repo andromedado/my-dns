@@ -3,7 +3,7 @@
 class ModelRecord extends Model
 {
 	protected $rid;
-	protected $zid;
+	protected $zone;
 	protected $name = '@';
 	protected $ttl;
 	protected $type;
@@ -12,7 +12,7 @@ class ModelRecord extends Model
 	
 	protected $dbFields = array(
 		'rid',
-		'zid',
+		'zone',
 		'name',
 		'ttl',
 		'type',
@@ -41,28 +41,7 @@ class ModelRecord extends Model
 	}
 	
 	public function getZone () {
-		return ModelZone::findOwner($this);
-	}
-	
-	protected function pingZone () {
-		$Z = $this->getZone();
-		$Z->updateVar('serial', $Z->serial + 1);
-	}
-	
-	protected function createFollowUp () {
-		parent::createFollowUp();
-		$this->pingZone();
-	}
-	
-	/**
-	 * Perform any class specific update follow up
-	 * @param Array $updatedProperties The Properties that were updated
-	 * @return void
-	 */
-	protected function updateFollowUp(array $updatedProperties) {
-		$this->pingZone();
-		parent::updateFollowUp($updatedProperties);
-		return;
+		return Zone::findOwner($this);
 	}
 	
 	protected function appendAdditionalData(array &$data) {
@@ -78,6 +57,11 @@ class ModelRecord extends Model
 	
 	public static function getTypes() {
 		return self::$Types;
+	}
+	
+	public static function getAllZones() {
+		$sql = "SELECT DISTINCT(`zone`) FROM `" . self::$Table . "` ORDER BY `zone` ASC";
+		return UtilsPDO::fetchIdsIntoInstances($sql, array(), 'Zone');
 	}
 	
 }

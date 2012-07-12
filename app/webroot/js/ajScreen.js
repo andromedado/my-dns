@@ -87,6 +87,7 @@ new App.Module(function ($) {
 				recip : $('#ajForms'),
 				complete : function () {
 					fit();
+					$('#ajForms').find('input').filter(':first').focus();
 				}
 			});
 		});

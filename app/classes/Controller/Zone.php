@@ -4,10 +4,9 @@ class ControllerZone extends ControllerApp
 {
 	
 	public static function doCacheOut() {
-		$Zs = ModelZone::findAll();
-		$namedConfFile = CACHE_DIR . 'named.conf';
-		$zonesDir = CACHE_DIR . 'zones' . DS;
-		$existingZones = glob($zonesDir . '*.*');
+		$Zs = Zone::findAll();
+		$namedConfFile = NAMED_CONF_DIR . 'named.conf';
+		$existingZones = glob(ZONES_DIR . '*.*');
 		if (!empty($existingZones)) {
 			foreach ($existingZones as $zone) {
 				unlink($zone);
@@ -18,6 +17,7 @@ class ControllerZone extends ControllerApp
 		$nCHandle = fopen($namedConfFile, 'w');
 		if (!$nCHandle) throw new ExceptionClear('Cant open ' . $namedConfFile);
 		$namedConf = file_get_contents($namedHeadFile);
+		$t = time();
 		foreach ($Zs as $Zone) {
 			$namedConf .= <<<EOT
 zone "{$Zone->zone}" IN {
@@ -26,15 +26,16 @@ zone "{$Zone->zone}" IN {
 	allow-update { none; };
 };
 
+
 EOT;
-			$zoneFile = $zonesDir . $Zone->zone . '.zone';
+			$zoneFile = ZONES_DIR . $Zone->zone . '.zone';
 			$zoneHandle = fopen($zoneFile, 'w');
 			if (!$zoneHandle) throw new ExceptionClear('Unable to open for writing: ' . $zoneFile);
 			$zoneContents = <<<EOT
 \$TTL    86400
 \$ORIGIN {$Zone->zone}.
 @       IN      SOA     {$Zone->zone}.      shad.downey.gmail.com (
-                                        {$Zone->serial}              ; serial
+                                        {$t}              ; serial
                                         3H              ; refresh
                                         15M             ; retry
                                         1W              ; expiry
@@ -73,14 +74,20 @@ EOT;
 	}
 	
 	public function review($id = NULL) {
-		$MZ = new ModelZone($id);
+		$MZ = new Zone($id);
 		if (!$MZ->isValid()) return $this->notFound();
 		$this->set('newRecordHref', FilterRoutes::buildUrl(array('Record', 'create', $MZ->id)));
 		$this->set('zone', $MZ->getData());
 	}
 	
+	public function index() {
+		$this->set('zones', UtilsArray::callOnAll(Zone::findAll(), 'getData'));
+		$this->set('newRecordHref', FilterRoutes::buildUrl(array('Record', 'create')));
+		$this->set('cacheOutAction', FilterRoutes::buildUrl(array('Zone', 'cacheOut')));
+	}
+	
 	public function delete($id = NULL) {
-		$MZ = new ModelZone($id);
+		$MZ = new Zone($id);
 		$this->response->redirectTo(array('Zone'));
 		if ($MZ->isValid()) {
 			$MZ->delete();
@@ -91,15 +98,10 @@ EOT;
 		return;
 	}
 	
-	public function index() {
-		$this->set('zones', UtilsArray::callOnAll(ModelZone::findAll(), 'getData'));
-		$this->set('newZoneHref', FilterRoutes::buildUrl(array('Zone', 'create')));
-		$this->set('cacheOutAction', FilterRoutes::buildUrl(array('Zone', 'cacheOut')));
-	}
-	
+	/*/
 	public function create() {
 		if ($this->request->isPost()) {
-			$MZ = new ModelZone;
+			$MZ = new Zone;
 			try {
 				$MZ->safeCreateWithVars($this->request->post());
 				$this->response->addMessage($MZ->whatAmI() . ' Created');
@@ -115,5 +117,6 @@ EOT;
 		}
 		$this->set('action', FilterRoutes::buildUrl(array('Zone', __FUNCTION__)));
 	}
-	
+	/*/
+
 }

@@ -26,3 +26,6 @@ define('WEBROOT_DIR', SERVER_PREFIX . DS);
 define('UPDIR_ROOT', WEBROOT_DIR . 'uploads' . DS);//With Trailing Slash
 define('IMAGE_NOT_FOUND_FILE', WEBROOT_DIR . 'images' . DS . 'notFound.jpg');
 define('IMAGE_NOT_FOUND_TYPE', 'image/jpeg');
+
+define('NAMED_CONF_DIR', APP_DIR . 'named' . DS);
+define('ZONES_DIR', NAMED_CONF_DIR . 'zones' . DS);

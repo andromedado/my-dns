@@ -5,7 +5,7 @@ class ControllerRecord extends ControllerApp
 	
 	public function delete($id = NULL) {
 		$MR = new ModelRecord($id);
-		$this->response->redirectTo(array('Zone', 'review', ModelZone::findOwner($MR)->id));
+		$this->response->redirectTo(array('Zone', 'review', Zone::findOwner($MR)->id));
 		if ($MR->isValid()) {
 			$MR->delete();
 			$this->response->addMessage('Record Deleted');
@@ -16,9 +16,9 @@ class ControllerRecord extends ControllerApp
 	}
 	
 	public function create($id = NULL) {
-		$MZ = new ModelZone($id);
-		if ($this->request->isAjax() && $MZ->isValid()) {
-			return array('html' => $this->renderForm($MZ));
+		$Z = new Zone($id);
+		if ($this->request->isAjax()) {
+			return array('html' => $this->renderForm($Z));
 		} elseif ($this->request->isPost()) {
 			$MR = new ModelRecord;
 			try {
@@ -27,7 +27,7 @@ class ControllerRecord extends ControllerApp
 			} catch (ExceptionValidation $e) {
 				$this->response->addMessage($e->getMessage(), true);
 			}
-			$this->response->redirectTo(array('Zone', 'review', ModelZone::findOwner($MR)->id));
+			$this->response->redirectTo(array('Zone'));
 			return;
 		}
 		return $this->notFound();
@@ -45,25 +45,25 @@ class ControllerRecord extends ControllerApp
 				} catch (ExceptionValidation $e) {
 					$this->response->addMessage($e->getMessage(), true);
 				}
-				$this->response->redirectTo(array('Zone', 'review', ModelZone::findOwner($MR)->id));
+				$this->response->redirectTo(array('Zone', 'review', Zone::findOwner($MR)->id));
 				return;
 			}
 		}
 		return $this->notFound();
 	}
 	
-	protected function renderForm(ModelZone $MZ = NULL, ModelRecord $MR = NULL) {
+	protected function renderForm(Zone $MZ = NULL, ModelRecord $MR = NULL) {
 		if (is_null($MR)) $MR = new ModelRecord;
-		if (is_null($MZ)) $MZ = ModelZone::findOwner($MR);
+		if (is_null($MZ)) $MZ = Zone::findOwner($MR);
 		$v = $MR->isValid() ? 'update' : 'create';
 		$AF = new AppForm(ucfirst($v) . ' DNS Record', array('Record', $v, $MR->id));
+		$AF->addField('Zone', Html::n('input', 't:text;n:zone;c:not_blank', $MZ->zone));
 		$AF->addField('Name', Html::n('input', 't:text;n:name;c:not_blank', $MR->name));
 		$AF->addField('TTL', Html::n('input', 't:text;n:ttl', $MR->ttl));
 		$TS = ModelRecord::getTypes();
 		$AF->addField('Type', UtilsHtm::select(array_combine($TS, $TS), 'type', $MR->type));
 		$AF->addField('Addtional', Html::n('input', 't:text;n:adi', $MR->adi));
 		$AF->addField('Value', Html::n('input', 't:text;n:value;c:not_blank', $MR->value));
-		$AF->addHiddenField($MZ->idCol, $MZ->id);
 		$AF->addHiddenField($MR->idCol, $MR->id);
 		return $AF;
 	}
