@@ -3,13 +3,14 @@
 	<head>
 {% block head %}
 	{% block metas %}{{ metas }}{% endblock %}
+	<base href="{{ base_url }}/" />
 	{% block links %}
 <link rel="stylesheet" type="text/css" href="/css/suture.php{% set styleAmp = '?' %}{% for style in styles %}{{ styleAmp ~ style }}{% set styleAmp = '&' %}{% endfor %}" />
 	{% endblock %}
 	{% block scripts %}
 <script type="text/javascript" src="/js/suture.php{% set scriptAmp = '?' %}{% for script in scripts %}{{ scriptAmp ~ script }}{% set scriptAmp = '&' %}{% endfor %}"></script>
 	{% endblock %}
-	<title>{% block title %}{{ title }} - My DNS{% endblock %}</title>
+	<title>{% block title %}My DNS{% endblock %}</title>
 {% endblock %}
 	</head>
 	<body>

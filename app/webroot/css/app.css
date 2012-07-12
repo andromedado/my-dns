@@ -22,6 +22,8 @@ table.autoT.nfw {
 	width:auto;
 }
 
+table.autoT > thead > tr > td,
+table.autoT > thead > tr > th,
 table.autoT > tbody > tr > td,
 table.autoT > tbody > tr > th {
 	border-top:1px solid #444;
@@ -30,6 +32,7 @@ table.autoT > tbody > tr > th {
 	font-size:18px;
 }
 
+table.autoT > thead > tr > th,
 table.autoT > tbody > tr > th {
 	background-color:#DDD;
 }

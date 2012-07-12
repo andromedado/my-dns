@@ -1,12 +1,19 @@
-{% extends "base.html.twig" %}
-{% block midWrap %}
+{% extends "base.html.twig" %} {% block midWrap %}
 <h2>Zones:</h2>
 <ul>
-{% for zone in zones %}
-	<li><a href="{{ zone.href }}">{{ zone.zone }}</a></li>
-{% else %}
-	<li><i>no zones found</i></li>
-{% endfor %}
+	{% for zone in zones %}
+	<li><a href="{{ zone.deleteHref }}" class="fr">delete {{ zone.zone }}</a>
+		<a href="{{ zone.href }}">{{ zone.zone }}</a>&nbsp;({{
+		zone.records|length }})</li> {% else %}
+	<li><i>no zones found</i></li> {% endfor %}
 </ul>
-<h3><a href="{{ newZoneHref }}">new zone</a></h3>
+<h3>
+	<a href="javascript:void(0)" onclick="App.prompt('{{ newZoneHref }}')">new
+		zone</a>
+</h3>
+<form action="{{ cacheOutAction }}" method="post">
+	<h1 align="center">
+		<input type="submit" value="Cache Out Zones" class="large" />
+	</h1>
+</form>
 {% endblock %}

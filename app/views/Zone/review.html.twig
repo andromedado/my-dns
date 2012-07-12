@@ -1,5 +1,45 @@
-{% extends "base.html.twig" %}
-{% block midWrap %}
+{% extends "base.html.twig" %} {% block midWrap %}
 <h2>Zone: {{ zone.zone }}</h2>
-
+<h3>DNS Records:</h3>
+<table class="autoT">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>TTL</th>
+			<th></th>
+			<th>Type</th>
+			<th></th>
+			<th>Value</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for record in zone.records %}
+		<tr>
+			<td>{{ record.name }}</td>
+			<td>{{ record.ttl }}</td>
+			<td>IN</td>
+			<td>{{ record.type }}</td>
+			<td>{{ record.adi }}</td>
+			<td>{{ record.value }}</td>
+			<td><a href="javascript:void(0)"
+				onclick="App.prompt('{{ record.editUrl }}')">edit</a></td>
+			<td>
+				<form action="{{ record.deleteUrl }}" method="post">
+					<input type="submit" value="Delete" />
+				</form>
+			</td>
+		</tr>
+		{% else %}
+		<tr>
+			<td colspan="8">none found</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<h3>
+	<a href="javascript:void(0)"
+		onclick="App.prompt('{{ newRecordHref }}')">new record</a>
+</h3>
 {% endblock %}

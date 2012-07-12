@@ -15,6 +15,8 @@ define('CONFIG_DIR', __DIR__ . DS);//With Trailing Slash
 if (empty($_SERVER['HTTP_HOST'])) $_SERVER['HTTP_HOST'] = DEFAULT_SITE_HOST;
 define('SITE_HOST', $_SERVER['HTTP_HOST']);
 if (empty($_SERVER['REQUEST_URI'])) $_SERVER['REQUEST_URI'] = '/';
+define('CURRENT_PROTOCOL', 'http' . (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443 ? 's' : '') . '://');
+define('BASE_URL', CURRENT_PROTOCOL . SITE_HOST);
 define('APP_CLASS_DIR', APP_DIR . 'classes' . DS);
 define('CACHE_DIR', APP_DIR . 'cache' . DS);
 define('TEMPLATE_CACHE_DIR', CACHE_DIR . 'templates');

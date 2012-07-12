@@ -28,8 +28,19 @@ class ModelZone extends Model
 		parent::load();
 	}
 	
+	public function getRecords() {
+		return ModelRecord::findAllBelongingTo($this);
+	}
+	
+	protected function deleteMyself() {
+		UtilsArray::callOnAll($this->getRecords(), 'delete');
+		parent::deleteMyself();
+	}
+	
 	protected function appendAdditionalData(array &$data) {
 		$data['href'] = FilterRoutes::buildUrl(array('Zone', 'review', $this->id));
+		$data['records'] = UtilsArray::callOnAll(ModelRecord::findAllBelongingTo($this), 'getData');
+		$data['deleteHref'] = FilterRoutes::buildUrl(array('Zone', 'delete', $this->id));
 	}
 	
 	protected function preFilterVars (array &$vars, $creating) {

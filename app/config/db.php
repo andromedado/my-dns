@@ -1,7 +1,7 @@
 <?php
 DBCFactory::setWriteInfo(array(
-	'host' => getenv('MYSQL_DB_HOST'),
-	'db' => getenv('MYSQL_DB_NAME'),
-	'usr' => getenv('MYSQL_USERNAME'),
-	'pwd' => getenv('MYSQL_PASSWORD'),
+	'host' => '127.0.0.1',
+	'db' => 'dns_db',
+	'usr' => 'dns_user',
+	'pwd' => 'dns_password',
 ));
