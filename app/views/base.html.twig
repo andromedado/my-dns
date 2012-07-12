@@ -4,6 +4,7 @@
 {% block head %}
 	{% block metas %}{{ metas }}{% endblock %}
 	<base href="{{ base_url }}/" />
+	<link rel="shortcut icon" href="favicon.ico" />
 	{% block links %}
 <link rel="stylesheet" type="text/css" href="/css/suture.php{% set styleAmp = '?' %}{% for style in styles %}{{ styleAmp ~ style }}{% set styleAmp = '&' %}{% endfor %}" />
 	{% endblock %}
