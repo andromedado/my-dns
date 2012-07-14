@@ -67,18 +67,29 @@ class ModelRecord extends Model
 }
 
 /*
+
+CREATE TABLE IF NOT EXISTS records (
+  rid INTEGER PRIMARY KEY AUTOINCREMENT,
+  zone varchar(120) NOT NULL DEFAULT '',
+  name varchar(120) NOT NULL DEFAULT '',
+  ttl int(11) DEFAULT NULL,
+  type varchar(6) NOT NULL DEFAULT '',
+  adi varchar(30) NOT NULL DEFAULT '',
+  value varchar(120) NOT NULL DEFAULT '',
+)
+
 CREATE TABLE `records` (
   `rid` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `zid` int(11) NOT NULL,
+  `zone` varchar(120) NOT NULL DEFAULT '',
   `name` varchar(120) NOT NULL DEFAULT '',
-  `ttl` int(11) NOT NULL,
+  `ttl` int(11) DEFAULT NULL,
   `type` varchar(6) NOT NULL DEFAULT '',
   `adi` varchar(30) NOT NULL DEFAULT '',
   `value` varchar(120) NOT NULL DEFAULT '',
   PRIMARY KEY (`rid`),
-  KEY `zid` (`zid`),
+  KEY `zid` (`zone`),
   KEY `name` (`name`),
-  KEY `zid_2` (`zid`,`name`),
+  KEY `zid_2` (`zone`,`name`),
   KEY `type` (`type`),
   KEY `value` (`value`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
