@@ -1,3 +1,3 @@
 <?php
-Controller::addPreFilters('FilterIpLog');
+Controller::addPreFilters();
 Controller::addPostFilters();
