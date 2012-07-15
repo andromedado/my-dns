@@ -83,7 +83,8 @@ EOT;
 	public function index() {
 		$this->set('zones', UtilsArray::callOnAll(Zone::findAll(), 'getData'));
 		$this->set('newRecordHref', FilterRoutes::buildUrl(array('Record', 'create')));
-		$this->set('cacheOutAction', FilterRoutes::buildUrl(array('Zone', 'cacheOut')));
+//		$this->set('cacheOutAction', FilterRoutes::buildUrl(array('Zone', 'cacheOut')));
+		$this->set('uploadAction', FilterRoutes::buildUrl(array('Record', 'importCsv')));
 	}
 	
 	public function delete($id = NULL) {

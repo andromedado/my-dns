@@ -10,4 +10,21 @@
 <h3>
 	<a href="javascript:void(0)" onclick="App.prompt('{{ newRecordHref }}')">new record</a>
 </h3>
+<div class="toggle_wrap" align="center">
+	<div class="toggles">
+		<input type="button" class="toggler" value="Import From CSV" />
+	</div>
+	<form action="{{ uploadAction }}" enctype="multipart/form-data" method="post" class="toggles none">
+		<div>
+			Import from CSV: <input type="file" name="csv" />
+			<div>
+				<label>has column headers? <input type="checkbox" name="headers" value="1" /></label>
+			</div>
+			<input type="submit" value="Import" />
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	App.moduleCall('toggle', 'listen');
+</script>
 {% endblock %}
