@@ -3,6 +3,28 @@
 class ControllerRecord extends ControllerApp
 {
 	
+	public function importCsv() {
+		$bad = true;
+		$msg = 'Invalid Post';
+		if ($this->request->isPost()) {
+			$F = new UploadedFile('csv');
+			if (!$F->valid) {
+				$msg = $F->errorMessage;
+			} else {
+				$MR = new ModelRecord;
+				try {
+					$MR->importFromCsv($F->tmp_name, $this->request->post('headers', false));
+					$msg = 'Import Successful';
+					$bad = false;
+				} catch (ExceptionBase $e) {
+					$msg = $e->getMessage();
+				}
+			}
+		}
+		$this->response->addMessage($msg, $bad);
+		$this->response->redirectTo(array('Zone'));
+	}
+	
 	public function delete($id = NULL) {
 		$MR = new ModelRecord($id);
 		$this->response->redirectTo(array('Zone', 'review', Zone::findOwner($MR)->id));
