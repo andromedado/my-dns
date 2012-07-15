@@ -1,6 +1,7 @@
 <?php
 define('PaZsCA8p','Yeah!');
 require_once(__DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'bootstrap.php');
+DBCFactory::prepSqliteDb();
 $wPDO = DBCFactory::wPDO();
 $stmt = $wPDO->prepare(<<<EOT
 CREATE TABLE IF NOT EXISTS records (
@@ -14,5 +15,5 @@ CREATE TABLE IF NOT EXISTS records (
 )
 EOT
 );
-var_dump($stmt, $wPDO->errorCode(), $wPDO->errorInfo());
-$stmt->execute(array());
+$r = $stmt->execute(array());
+//var_dump($r, $stmt, $wPDO->errorCode(), $wPDO->errorInfo());
