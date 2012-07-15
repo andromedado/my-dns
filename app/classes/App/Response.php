@@ -9,6 +9,9 @@ class AppResponse extends Response {
 	protected function load() {
 		parent::load();
 		$this->set('debug', DEBUG);
+		if (DEBUG) {
+			$this->set('session', $_SESSION);
+		}
 	}
 	
 }
