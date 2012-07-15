@@ -45,8 +45,10 @@ EOT;
 EOT;
 			$Rs = $Zone->getRecords();
 			foreach ($Rs as $Record) {
+				$ttl = $Record->ttl;
+				if (is_null($ttl) || $ttl ===  'NULL') $ttl = '';
 				$zoneContents .= <<<EOT
-{$Record->name}	{$Record->ttl}	IN	{$Record->type}	{$Record->adi}	{$Record->value}	; rid-{$Record->id}
+{$Record->name}	{$ttl}	IN	{$Record->type}	{$Record->adi}	{$Record->value}	; rid-{$Record->id}
 
 EOT;
 			}
