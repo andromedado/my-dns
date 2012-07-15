@@ -19,6 +19,7 @@ define('CURRENT_PROTOCOL', 'http' . (isset($_SERVER['SERVER_PORT']) && $_SERVER[
 define('BASE_URL', CURRENT_PROTOCOL . SITE_HOST);
 define('APP_CLASS_DIR', APP_DIR . 'classes' . DS);
 define('CACHE_DIR', APP_DIR . 'cache' . DS);
+define('LOG_FILE', CACHE_DIR . 'app.log');
 define('TEMPLATE_CACHE_DIR', CACHE_DIR . 'templates');
 define('APP_TEMPLATES_DIR', APP_DIR . 'views' . DS);
 define('SERVER_PREFIX', APP_DIR . 'webroot');//No Trailing Slash
